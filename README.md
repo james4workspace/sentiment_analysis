@@ -1,11 +1,36 @@
 # sentiment_analysis
 
-1.代码的复用性
+## 1.Libraries Importion
 
-1.1.变量和字符串的复用性
+There are some general library requirements for the project and some which are specific to individual methods. The general requirements are as follows.
 
-一定要注意代码的复用性，如果同一段代码要对不同数据进行操作，那么修改的变量尽量局限在开头一两个，后面的通过调用来修改。
-可以通过对变量的统一调用：统一变量 = 特别变量，之后直接调用统一变量即可。
-如果是字符串，存储位置：则可以通过“字符串”.format（相应可能修改的变量）来进行调用。
-e.g.
-# now when I copy the code for another dataset, I can easily change the special name of the dataset for 
+* `numpy`
+* `pandas`
+* `bs4`
+* `urllib`
+* `re`
+* `tqdm`
+* `pickle`
+* `gensim`
+* `nltk`
+* `sklearn`
+* `spellchecker`
+* `operator`
+* `tensorflow`
+* `keras`
+* `matplotlib`
+
+## 2.Third Party Resources Preparation
+
+According to Preprocessing, word2vec and glove are both not able to convert emoji or emoticon into vector. But in sentiment analysis, emoji and emoticon are strong expression for stating emotion. Thus, I searched for authoriative explaination of emoji and emoticon and got 2 links for explaining the exact meaning of emoji/emoticon:
+
+* `https://en.wikipedia.org/wiki/List_of_emoticons`
+* `https://unicode.org/emoji/charts/emoji-list.html`
+
+For the purpose of crawling down all the information provided by these 2 links, I built 2 py files namely `web_crawl_emoji.py` and `web_crawl_emoticon.py`.
+`web_crawl_emoji.py` is for link from `https://unicode.org/emoji/charts/emoji-list.html`, while `web_crawl_emoticon.py` is for `https://en.wikipedia.org/wiki/List_of_emoticons`. 
+
+After using `web_crawl_emoji.py`, we can have `emoji_meaning.csv`, which demonstrates the exact meaning of certain emoji within the dataframe.
+After using `web_crawl_emoticon.py`, we can have `emo_meaning.csv`, which demonstrates the exact meaning of certain emoji within the dataframe.
+
+And `web_crawl_merge.py` is for emerging the dataframes built by `web_crawl_emoji.py` and `web_crawl_emoticon.py`. And it built `emo_collection.csv` as its production.
