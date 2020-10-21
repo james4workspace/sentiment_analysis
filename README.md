@@ -148,7 +148,17 @@ In `VectorBuild_word2vec.ipynb` and `VectorBuild_glove.ipynb`, I transfered the 
 While transfering the vectors, I calculate each emoji/emoticon vector by taking the average vector of vectors transfered from its meaning. E.g. `[2,"grin smile"]` -> 2 vector of average vector of word "grin" and word "smile". And I add these emoji/emoticon back to where they were before. Therefore, I have 3rd version of data. They are called "train2" and "test2" based on word2vec, "train5" and "test5" based on GloVe.
 
 ### 3.3.data description
-| data name  | meaning |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| data name  | data version  | word embedding | characteristics |
+| ------------- | ------------- | ------------- | ------------- |
+| vec_train_a_no_cor_word2vec  | 0 | word2vec  | vectors of train data without correttion of misspell, emoji/emoticon |
+| vec_train_a_no_emo_word2vec  | 1  | word2vec  | vectors of train data without emoji/emoticon vectors |
+| vec_train_a_emo_word2vec  | 2  | word2vec  | vectors of train data with emoji/emoticon and correction of misspell  |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
