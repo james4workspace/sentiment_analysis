@@ -127,8 +127,28 @@ Till now, I have the second version of data - data with correction of misspell a
 All the process I did above are based on the calculation of coverage of data based on word2vec or GloVe. These information is in `check data format part`. I firstly extract distinct vocabulary of all words in data, and then check how much percentage of the vocabulary can be transfered into vector by word2vec or GloVe. 
 
 And after all those process, I can have coverage of data based on word2vec below:
-`In Embedding Index we have 88.91% coverage of distinct vocabulary
 
-And we have 99.52% coverage of all text
+`In Embedding Index we have 88.91% coverage of distinct vocabulary`
 
-The number of words which are not covered in word2vec resource is: 1249`
+`And we have 99.52% coverage of all text`
+
+`The number of words which are not covered in word2vec resource is: 1249`
+
+And based on GloVe, the final result is below:
+
+`In Embedding Index we have 95.11% coverage of distinct vocabulary`
+
+`And we have 99.85% coverage of all text`
+
+`The number of words which are not covered in word2vec resource is: 551`
+
+### 3.2.transfer data from text into vectors
+In `VectorBuild_word2vec.ipynb` and `VectorBuild_glove.ipynb`, I transfered the preprocessed data into vectors for further classification.
+
+While transfering the vectors, I calculate each emoji/emoticon vector by taking the average vector of vectors transfered from its meaning. E.g. `[2,"grin smile"]` -> 2 vector of average vector of word "grin" and word "smile". And I add these emoji/emoticon back to where they were before. Therefore, I have 3rd version of data. They are called "train2" and "test2" based on word2vec, "train5" and "test5" based on GloVe.
+
+### 3.3.data description
+| data name  | meaning |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
