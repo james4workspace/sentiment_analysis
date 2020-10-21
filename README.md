@@ -1,3 +1,14 @@
+"""
+**Update**(21 Oct. 2020):
+
+Superviser: Prof.Dr.Goran Glovas
+
+Author: Shenghan ZHANG
+
+E-mail: shezhang@mail.uni-mannheim.de
+
+"""
+
 # sentiment_analysis
 
 ## 1.Libraries Importion
@@ -153,12 +164,44 @@ While transfering the vectors, I calculate each emoji/emoticon vector by taking 
 | vec_train_a_no_cor_word2vec  | 0 | word2vec  | vectors of train data without correttion of misspell, emoji/emoticon |
 | vec_train_a_no_emo_word2vec  | 1  | word2vec  | vectors of train data without emoji/emoticon vectors |
 | vec_train_a_emo_word2vec  | 2  | word2vec  | vectors of train data with emoji/emoticon and correction of misspell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
+| vec_train_a_no_cor_glove  | 3 | GloVe  | vectors of train data without correttion of misspell, emoji/emoticon |
+| vec_train_a_no_emo_glove  | 4  | GloVe | vectors of train data without emoji/emoticon vectors |
+| vec_train_a_emo_glove  | 5  | GloVe | vectors of train data with emoji/emoticon and correction of misspell  |
+| vec_test_a_no_cor_word2vec  | 0 | word2vec  | vectors of test data without correttion of misspell, emoji/emoticon |
+| vec_test_a_no_emo_word2vec  | 1  | word2vec  | vectors of test data without emoji/emoticon vectors |
+| vec_test_a_emo_word2vec  | 2  | word2vec  | vectors of test data with emoji/emoticon and correction of misspell  |
+| vec_test_a_no_cor_glove  | 3 | GloVe  | vectors of test data without correttion of misspell, emoji/emoticon |
+| vec_test_a_no_emo_glove  | 4  | GloVe | vectors of test data without emoji/emoticon vectors |
+| vec_test_a_emo_glove  | 5  | GloVe | vectors of test data with emoji/emoticon and correction of misspell  |
+
+## 4.Models Explaination
+### 4.1.Building and Training Phase
+
+According to reference research, I choose 5 models as classifiers to predict the result. There 5 models are below:
+
+* `SVM`
+* `Kernel SVM`
+* `CNN`
+* `LSTM`
+* `GRU`
+
+Since it's much easy to explain them in coding, please check them directly in my coding files.
+
+While running these models, I also save the models, their predictions and scores in archive `DataSet` and `Prediction`, if you don't have much time running the models, you could directly load them in the coding file to check the result.
+
+### 4.2.Evaluation Phase
+
+For evaluation, I calculate the accuracy, precision, recall, f1 score for evaluating the result from different version of data under same model. And I also built functions for getting ROC Curve, AUC and P-R Curve, average precision for detailed comparison.
+
+In deep learning models such as CNN, LSTM, GRU, I also built learning curve to show the history of accuracy change and loss change in each epoch.
+
+All these pictures of curves can also be found in archive `Pictures`.
+
+## 5.Evaluation
+For further comparison to understand which version of data outperformed in same model comparing with other versions of data, and also for the purpose of understanding which model outperformed other models, I built this coding file named `Evaluation.ipynb`.
+
+In 2nd part "Evaluation on accuracy, precision, f1 score", I built the dataframe to contain all the metrics of evaluations of different data under different model, which is saved as `df_evaluation.xlsx`. The reason why I saved the dataframe as xlsx, it's because it's easy to produce charts demonstrating the comparison of each metrics. You can check them in the xlsx file.
+
+In 3rd part "Evaluation with ROC curve, AUC on same model", I built functions for gathering tpr, fpr, auc, and precision, recall, etc. By using these data, I built charts for showing the performance of different data under same model with different standards, and charts for showing the performance of same data under different model with different standards.
+
+Here I didn't use P-R curve to demonstrate the performance of each model, since AUC can be better for illustrating how good a model or a version of data is.
