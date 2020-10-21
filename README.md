@@ -52,6 +52,8 @@ For GloVe, I use the lexicon called `glove.840B.300d.txt` provided by Jeffrey Pe
 
 * `https://nlp.stanford.edu/projects/glove/`
 
+And for easy use, I built `process_glove_wordsonly.py` to process lexicon `glove.840B.300d.txt`, in order to gather its distinct vocabulary and saved it as list type `glove.840B.300d_words.pkl`.
+
 # Coding Explaination
 
 Here I will explain the function of each coding file according the process of sentiment analysis prediction.
@@ -68,4 +70,18 @@ It's because I'm using pretrained word embedding lexicon, I have no idea which w
 * `Preprocessing_TestData_GloVe.ipynb`
 * `Preprocessing_TestData_Word2vec.ipynb`
 
-Based on their names, you can see that I do preprocessing based on different word embedding, though the procedures inside the file are the same. I use 
+Based on their names, you can see that I do preprocessing based on different word embedding, though the procedures inside the file are the same. I will explain the procedures below:
+
+#### (1) set label category into categorical numbers
+
+Since the label of original data are formed by 4 different textual categories namely "happy, sad, angry, others", I need to transfer them into categorical numbers for classification. The order is: `{"others":0,"happy":1,"sad":2,"angry":3}`, and save them as `train_y.pkl` and `test_y.pkl`, which are from train dataset and test dataset.
+
+#### (2) combination
+
+Though there are 3 turns of texts provided by train and test dataset, actually I only need one text for each row as train or test dataset. So here is the part I combine 3 turns' texts together as one. Besides, since I need to extract emoji/emoticon later, and their positions in text are also important, I still keep the 3 turns' texts.
+
+#### (3) extract emoji/emoticon
+
+In this part, I extracted emoji/emoticon from each text based on `emo_collection_glove.csv` and `emo_collection_word2vec.csv` according to different word embedding I'm using. These 2 dataframes are built also by preprocessing based on GloVe and Word2Vec, this is because I need to substitute the emoji/emoticon with its meaning.
+
+* e.g. "but I'm in love with it 😁😁" -> [2,"grin smile"]
