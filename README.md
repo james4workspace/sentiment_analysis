@@ -84,4 +84,9 @@ Though there are 3 turns of texts provided by train and test dataset, actually I
 
 In this part, I extracted emoji/emoticon from each text based on `emo_collection_glove.csv` and `emo_collection_word2vec.csv` according to different word embedding I'm using. These 2 dataframes are built also by preprocessing based on GloVe and Word2Vec, this is because I need to substitute the emoji/emoticon with its meaning.
 
-* e.g. "but I'm in love with it 😁😁" -> [2,"grin smile"]
+* e.g. "but I'm in love with it 😁😁" -> "but I'm in love with it " & [2,"grin smile"] 
+* explaination: 2 means this emoji/emoticon happened in text 2 times, and "grin smile" is its meaning.
+
+The extraction of emoji/emoticon are later stored as `.pkl` file with names such as "extraction_emo_3_test_glove.pkl"
+
+#### (4)
