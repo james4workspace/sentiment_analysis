@@ -89,4 +89,46 @@ In this part, I extracted emoji/emoticon from each text based on `emo_collection
 
 The extraction of emoji/emoticon are later stored as `.pkl` file with names such as "extraction_emo_3_test_glove.pkl"
 
-#### (4)
+#### (4) lower the words
+
+In this part, I lower the words in text.
+
+* e.g. "Just for time pass" -> "just for time pass"
+
+#### (5) Seperate the adhered words with space and remove redundant emoji, emoticons
+Some emoji/emoticon may not be covered by crawled emoji/emoticon explaination dataframe, therefore, I need to clean them out here. And also some words sticked together can make word embedding hard to extract them exactly.
+
+* e.g. "yess i am crazyyy😂😂" -> "yess i am crazyyy 😂 😂" -> "yess i am crazyyy "
+* e.g. "when did i?" -> "when did i ?" here "i?" should be seperated into "i ?"
+
+#### (6) Correct common words
+There are some words hard to explain in word embedding but necessary to explain, such as "don't", "isn't". Because for example "isn't happy" is on the opposite side of "is happy".
+Besides after step (5) the words within punctuation are seperated with space, which also need correction.
+
+* e.g. "he isn ' t happy" -> "he is not happy"
+
+#### (7) Correct missing characters
+While checking the dataset in train data, I found out there are a lot of this kind of situation happend in text: "hmmm i can talk no w" or "this is wel l known". So I add function to correct the situation.
+
+#### (8) Remove punctuation
+Punctuations are not able to be transfered into vector by word2vec and mostly useless in sentiment analysis. Therefore, I just delete them.
+
+#### (9) Remove stopwords
+Since stopwords make sense in sentence with certain order, I only remove those stopwords which can't be transfered into vector due to the limit of word embedding.
+
+Till now, I have the first version of data - data without correction of misspell and translation of shorthand words, and also without emoji/emoticon values inside. I call them "train0" and "test0" through word2vec, "train3" and "test3" through GloVe.
+
+#### (10) Correction of misspell and translation of shorthand words
+By using `pyspellchecker`, I can correct the words such as "crazzzy", "amazzzzing". And some words are not able to be translated even via spellchecker, therefore, I translate them hand-crafted.
+
+Till now, I have the second version of data - data with correction of misspell and translation of shorthand words but without emoji/emoticon values. I call them "train1" and "test1" through word2vec, "train4" and "test4" through GloVe.
+
+#### (11) Check coverage of data based on different word embedding
+All the process I did above are based on the calculation of coverage of data based on word2vec or GloVe. These information is in `check data format part`. I firstly extract distinct vocabulary of all words in data, and then check how much percentage of the vocabulary can be transfered into vector by word2vec or GloVe. 
+
+And after all those process, I can have coverage of data based on word2vec below:
+`In Embedding Index we have 88.91% coverage of distinct vocabulary
+
+And we have 99.52% coverage of all text
+
+The number of words which are not covered in word2vec resource is: 1249`
