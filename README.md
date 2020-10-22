@@ -60,9 +60,13 @@ For word2vec, I use the lexicon called `GoogleNews-vectors-negative300.bin.gz` p
 
 * `https://code.google.com/archive/p/word2vec/`
 
+Please download it and save it in DataSet archive.
+
 For GloVe, I use the lexicon called `glove.840B.300d.txt` provided by Jeffrey Pennington,  Richard Socher,  Christopher D. Manning, and here is the link below:
 
 * `https://nlp.stanford.edu/projects/glove/`
+
+Please download it and save it in DataSet archive.
 
 And for easy use, I built `process_glove_wordsonly.py` to process lexicon `glove.840B.300d.txt`, in order to gather its distinct vocabulary and saved it as list type `glove.840B.300d_words.pkl`.
 
