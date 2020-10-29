@@ -1,6 +1,6 @@
 """
 
-**Update**(21 Oct. 2020):
+**Author Information**(21 Oct. 2020):
 
 Superviser: Prof.Dr.Goran Glovas
 
@@ -75,6 +75,13 @@ And for easy use, I built `process_glove_wordsonly.py` to process lexicon `glove
 Here I will explain the function of each coding file according the process of sentiment analysis prediction.
 
 ## 3.Preprocessing
+### 3.1.Preprocessing data based on TF-IDF word embedding - baseline model
+The name of the code file is `Preprocessing_TrainATest_TFIDF.ipynb`, which is for preprocessing of train data into tf-idf vectors and apply the same preprocessing procedure produced by train data to test data. These procedures include lowering the words in text, seperate the adhered words combination such as "you?" into "you ?", remove emoji/emoticons, remove stopwords, remove punctuations, correct missepll and stemming. 
+
+All these procedures were done based on the number of distinct vocabulary of all texts from train data. E.g. "crazzzzy" is same as the word "crazy", if without correction of mispell, they will be taken as 2 different distinct words. So the lower number of the distinct vocabulary of train data, the better the preprocessing is. Especially for TF-IDF word embedding, because the number of vocabulary is also the number of dimension of the vector for one sentence, which means lower the vocabulary can ease the job for model training.
+
+The original number of distinct words vocabulary is 33,024, while after preprocessing, the number turned into 8,399, which is a large improvement. And I take 3 models namely Logistic Regression, SVM, and Kernel SVM as baseline models for checking the performance of TF-IDF word embedding, which you can also check them in the coding files so called `LogisticRegression_baselinemodel.ipynb`, `Kernel_SVM_baselinemodel.ipynb`, `SVM_baselinemodel.ipynb`.
+
 ### 3.2.Preprocessing data based on different word embedding lexicon
 
 It's because I'm using pretrained word embedding lexicon, I have no idea which word with which format can be represented into vector correctly according the word embedding lexicon I imported. That's why I built 6 different `.ipynb` files for preprocessing data. Here are the names of them below:
@@ -184,8 +191,9 @@ While transfering the vectors, I calculate each emoji/emoticon vector by taking 
 ## 4.Models Explaination
 ### 4.1.Building and Training Phase
 
-According to reference research, I choose 5 models as classifiers to predict the result. There 5 models are below:
+According to reference research, I choose 6 models as classifiers to predict the result. There are 6 models are below:
 
+* `Logistic Regression`
 * `SVM`
 * `Kernel SVM`
 * `CNN`
