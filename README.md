@@ -75,7 +75,7 @@ And for easy use, I built `process_glove_wordsonly.py` to process lexicon `glove
 Here I will explain the function of each coding file according the process of sentiment analysis prediction.
 
 ## 3.Preprocessing
-### 3.1.Preprocessing data based on different word embedding lexicon
+### 3.2.Preprocessing data based on different word embedding lexicon
 
 It's because I'm using pretrained word embedding lexicon, I have no idea which word with which format can be represented into vector correctly according the word embedding lexicon I imported. That's why I built 6 different `.ipynb` files for preprocessing data. Here are the names of them below:
 
@@ -158,26 +158,28 @@ And based on GloVe, the final result is below:
 
 `The number of words which are not covered in word2vec resource is: 551`
 
-### 3.2.transfer data from text into vectors
+### 3.3.transfer data from text into vectors
 In `VectorBuild_word2vec.ipynb` and `VectorBuild_glove.ipynb`, I transfered the preprocessed data into vectors for further classification.
 
 While transfering the vectors, I calculate each emoji/emoticon vector by taking the average vector of vectors transfered from its meaning. E.g. `[2,"grin smile"]` -> 2 vector of average vector of word "grin" and word "smile". And I add these emoji/emoticon back to where they were before. Therefore, I have 3rd version of data. They are called "train2" and "test2" based on word2vec, "train5" and "test5" based on GloVe.
 
-### 3.3.data description
+### 3.4.data description
 | data name  | data version  | word embedding | characteristics |
 | ------------- | ------------- | ------------- | ------------- |
-| vec_train_a_no_cor_word2vec  | 0 | word2vec  | vectors of train data without correttion of misspell, emoji/emoticon |
-| vec_train_a_no_emo_word2vec  | 1  | word2vec  | vectors of train data without emoji/emoticon vectors |
-| vec_train_a_emo_word2vec  | 2  | word2vec  | vectors of train data with emoji/emoticon and correction of misspell  |
-| vec_train_a_no_cor_glove  | 3 | GloVe  | vectors of train data without correttion of misspell, emoji/emoticon |
-| vec_train_a_no_emo_glove  | 4  | GloVe | vectors of train data without emoji/emoticon vectors |
-| vec_train_a_emo_glove  | 5  | GloVe | vectors of train data with emoji/emoticon and correction of misspell  |
-| vec_test_a_no_cor_word2vec  | 0 | word2vec  | vectors of test data without correttion of misspell, emoji/emoticon |
-| vec_test_a_no_emo_word2vec  | 1  | word2vec  | vectors of test data without emoji/emoticon vectors |
-| vec_test_a_emo_word2vec  | 2  | word2vec  | vectors of test data with emoji/emoticon and correction of misspell  |
-| vec_test_a_no_cor_glove  | 3 | GloVe  | vectors of test data without correttion of misspell, emoji/emoticon |
-| vec_test_a_no_emo_glove  | 4  | GloVe | vectors of test data without emoji/emoticon vectors |
-| vec_test_a_emo_glove  | 5  | GloVe | vectors of test data with emoji/emoticon and correction of misspell  |
+| train_df_tfidf.csv  | _baseline | tf-idf  | vectors of train data with correttion of misspell and stemming, but without emoji/emoticon |
+| test_df_tfidf.csv  | _baseline | tf-idf  | vectors of train data with correttion of misspell and stemming, but without emoji/emoticon |
+| vec_train_a_no_cor_word2vec.pkl  | 0 | word2vec  | vectors of train data without correttion of misspell, emoji/emoticon |
+| vec_train_a_no_emo_word2vec.pkl  | 1  | word2vec  | vectors of train data without emoji/emoticon vectors |
+| vec_train_a_emo_word2vec.pkl  | 2  | word2vec  | vectors of train data with emoji/emoticon and correction of misspell  |
+| vec_train_a_no_cor_glove.pkl  | 3 | GloVe  | vectors of train data without correttion of misspell, emoji/emoticon |
+| vec_train_a_no_emo_glove.pkl  | 4  | GloVe | vectors of train data without emoji/emoticon vectors |
+| vec_train_a_emo_glove.pkl  | 5  | GloVe | vectors of train data with emoji/emoticon and correction of misspell  |
+| vec_test_a_no_cor_word2vec.pkl  | 0 | word2vec  | vectors of test data without correttion of misspell, emoji/emoticon |
+| vec_test_a_no_emo_word2vec.pkl  | 1  | word2vec  | vectors of test data without emoji/emoticon vectors |
+| vec_test_a_emo_word2vec.pkl  | 2  | word2vec  | vectors of test data with emoji/emoticon and correction of misspell  |
+| vec_test_a_no_cor_glove.pkl  | 3 | GloVe  | vectors of test data without correttion of misspell, emoji/emoticon |
+| vec_test_a_no_emo_glove.pkl  | 4  | GloVe | vectors of test data without emoji/emoticon vectors |
+| vec_test_a_emo_glove.pkl  | 5  | GloVe | vectors of test data with emoji/emoticon and correction of misspell  |
 
 ## 4.Models Explaination
 ### 4.1.Building and Training Phase
