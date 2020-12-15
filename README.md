@@ -82,7 +82,12 @@ The name of the code file is `Preprocessing_TrainATest_TFIDF.ipynb`, which is fo
 
 All these procedures were done based on the number of distinct vocabulary of all texts from train data. E.g. "crazzzzy" is same as the word "crazy", if without correction of mispell, they will be taken as 2 different distinct words. So the lower number of the distinct vocabulary of train data, the better the preprocessing is. Especially for TF-IDF word embedding, because the number of vocabulary is also the number of dimension of the vector for one sentence, which means lower the vocabulary can ease the job for model training.
 
-The original number of distinct words vocabulary is 33,024, while after preprocessing, the number turned into 8,399, which is a large improvement. And I take 3 models namely Logistic Regression, SVM, and Kernel SVM as baseline models for checking the performance of TF-IDF word embedding, which you can also check them in the coding files so called `LogisticRegression_baselinemodel.ipynb`, `Kernel_SVM_baselinemodel.ipynb`, `SVM_baselinemodel.ipynb`.
+The original number of distinct words vocabulary is 33,024, while after preprocessing, the number turned into 8,399, which is a large improvement. And I also found out setting different coefficients set can affect the performance of result. Therefore, I built 5 versions of baseline models with classifiers Logistic Regression and SVM.
+| file name  | data version  | co1 | co2 | co3 |
+| ------------- | ------------- | ------------- | ------------- |------------- |
+| LogisticRegression_baselinemodel_overall.ipynb | overall | 1 | 1 |1 |
+| LogisticRegression_baselinemodel_delete2ndturn.ipynb | no2 | 1 | 0 |1 |
+
 
 ### 3.2.Preprocessing data based on different word embedding lexicon
 
@@ -167,12 +172,15 @@ And based on GloVe, the final result is below:
 
 `The number of words which are not covered in word2vec resource is: 551`
 
-### 3.3.transfer data from text into vectors
+### 3.3.Emoji/Emoticon2vec Model Building
+After preprocessing of emoji/emoticon, i built `VectorBuilding_emo_glove.ipynb` and `VectorBuilding_emo_word2vec.ipynb`, for the purpose of transfering emoji/emoticon into vectors based on pre-trained word-embedding resources.
+
+### 3.4.transfer data from text into vectors
 In `VectorBuild_word2vec.ipynb` and `VectorBuild_glove.ipynb`, I transfered the preprocessed data into vectors for further classification.
 
 While transfering the vectors, I calculate each emoji/emoticon vector by taking the average vector of vectors transfered from its meaning. E.g. `[2,"grin smile"]` -> 2 vector of average vector of word "grin" and word "smile". And I add these emoji/emoticon back to where they were before. Therefore, I have 3rd version of data. They are called "train2" and "test2" based on word2vec, "train5" and "test5" based on GloVe.
 
-### 3.4.data description
+### 3.5.data description
 | data name  | data version  | word embedding | characteristics |
 | ------------- | ------------- | ------------- | ------------- |
 | train_df_tfidf.csv  | _baseline | tf-idf  | vectors of train data with correttion of misspell and stemming, but without emoji/emoticon |
