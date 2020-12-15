@@ -87,6 +87,16 @@ The original number of distinct words vocabulary is 33,024, while after preproce
 | ------------- | ------------- | ------------- | ------------- |------------- |
 | LogisticRegression_baselinemodel_overall.ipynb | overall | 1 | 1 |1 |
 | LogisticRegression_baselinemodel_delete2ndturn.ipynb | no2 | 1 | 0 |1 |
+| LogisticRegression_baselinemodel_double1st3rdturn.ipynb | double13 | 2 | 1 |2 |
+| LogisticRegression_baselinemodel_3times3rdturn.ipynb | time3 | 2 | 1 |3 |
+| LogisticRegression_baselinemodel_del2big3.ipynb | del2big3 | 1 | 0 |2 |
+| SVM_baselinemodel_overall.ipynb | overall | 1 | 1 |1 |
+| SVM_baselinemodel_delete2ndturn.ipynb | no2 | 1 | 0 |1 |
+| SVM_baselinemodel_double1st3rdturn.ipynb | double13 | 2 | 1 |2 |
+| SVM_baselinemodel_3times3rdturn.ipynb | time3 | 2 | 1 |3 |
+| SVM_baselinemodel_del2big3.ipynb | del2big3 | 1 | 0 |2 |
+
+It turned out working good on baseline model, but only the performance promoted by lowering the coefficient of co2. Since TF-IDF can't preserve the order of words in text, I import the coefficients setting into formal model building. And I built `LogisticRegression_compareFocus_3turn_word2vec.ipynb`, `LogisticRegression_compareFocus_3turn_glove.ipynb`, `SVM_compareFocus_3turn_glove.ipynb`, `SVM_compareFocus_3turn_word2vec.ipynb` these 4 files to try different coefficients sets in formal model building with word2vec and GloVe word embedding.
 
 
 ### 3.2.Preprocessing data based on different word embedding lexicon
