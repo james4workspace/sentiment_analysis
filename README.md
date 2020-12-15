@@ -193,7 +193,7 @@ While transfering the vectors, I calculate each emoji/emoticon vector by taking 
 ## 4.Models Explaination
 ### 4.1.Building and Training Phase
 
-According to reference research, I choose 6 models as classifiers to predict the result. There are 6 models are below:
+According to reference research, I built 10 models for training:
 
 * `Logistic Regression`
 * `SVM`
@@ -201,10 +201,14 @@ According to reference research, I choose 6 models as classifiers to predict the
 * `CNN`
 * `LSTM`
 * `GRU`
+* `BiLSTM`
+* `BiGRU`
+* `BiLSTM_self-attention`
+* `BiGRU_self-attention`
 
 Since it's much easy to explain them in coding, please check them directly in my coding files.
 
-While running these models, I also save the models, their predictions and scores in archive `DataSet` and `Prediction`, if you don't have much time running the models, you could directly load them in the coding file to check the result.
+While running these models, I also save the models, their predictions and scores in archive `DataSet` and `Prediction`, if you don't have much time running the models, you could directly load them in the coding file to check the result. I tried to save models in `DataSet` as well, but due to the limit of uploading, I can only save deep learning models, which you can also directly use in coding files.
 
 ### 4.2.Evaluation Phase
 
