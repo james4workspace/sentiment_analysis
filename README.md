@@ -1,6 +1,6 @@
 """
 
-**Author Information**(21 Oct. 2020):
+**Author Information**(16 Nov. 2020):
 
 Superviser: Prof.Dr.Goran Glovas
 
@@ -31,6 +31,8 @@ There are some general library requirements for the project and some which are s
 * `tensorflow`
 * `keras`
 * `matplotlib`
+* `keras_self_attention`
+
 
 ## 2.Third Party Resources Preparation
 ### 2.1.Emoji/Emoticon Explaination Resource
